@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site de Streaming</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+<!-- Barre de navigation -->
+<nav class="navbar">
+    <div class="logo">MonFlix</div>
+    <ul class="nav-links">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Séries</a></li>
+        <li><a href="#">Films</a></li>
+        <li><a href="#">Nouveautés</a></li>
+        <li><a href="#">Créer un compte</a></li>
+
+    </ul>
+</nav>
+<div class="container">
+    <h1>Bienvenue</h1>
+
+    <div class="form-toggle-btns">
+        <button onclick="showLoginForm()">Connexion</button>
+        <button onclick="showRegisterForm()">Inscription</button>
+    </div>
+
+    {# Formulaire de Connexion #}
+    <div id="login-form" class="form-container active">
+        <h2>Se connecter</h2>
+        <form action="{{ path('app_login') }}" method="post">
+            <div>
+                <label for="username">Email :</label>
+                <input type="text" id="username" name="_username" value="" required autofocus>
+            </div>
+
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="_password" required>
+            </div>
+
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+
+    {# Formulaire d'Inscription #}
+    <div id="register-form" class="form-container">
+
+        <h2>Créer un compte</h2>
+        <form action="{{ path('app_register') }}" method="POST">
+
+            <div>
+                <label for="fullname">Nom complet</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="confirm-password">Confirmer le mot de passe</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+
+    </div>
+</div>
+
+
+
+
+<script>
+    function showLoginForm() {
+        document.getElementById('login-form').classList.add('active');
+        document.getElementById('register-form').classList.remove('active');
+        console.log("show login form");
+    }
+
+    function showRegisterForm() {
+        document.getElementById('register-form').classList.add('active');
+        document.getElementById('login-form').classList.remove('active');
+        console.log("show register form")
+    }
+</script>
+</body>
+</html>

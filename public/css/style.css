@@ -1,0 +1,120 @@
+/* Style général */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+/* Couleurs et arrière-plan */
+body {
+    background-color: #141414;
+}
+
+/* Barre de navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #181818;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e50914;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Bannière principale */
+.banner {
+    position: relative;
+    height: 400px;
+    background-image: url('banner.jpg'); /* Remplacez par l'image de votre choix */
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-content {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.banner p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.banner button {
+    background-color: #e50914;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.banner button:hover {
+    background-color: #f40612;
+}
+
+/* Sections de catégories */
+.categories {
+    padding: 20px 30px;
+}
+
+.categories h2 {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.movie-row {
+    display: flex;
+    overflow-x: auto;
+}
+
+.movie-row img {
+    width: 150px;
+    height: 225px;
+    margin-right: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.movie-row img:hover {
+    transform: scale(1.1);
+}
+
+
+.form-container {
+    display: none;
+}
+.form-container.active {
+    display: block;
+}
+.form-toggle-btns {
+    margin-bottom: 20px;
+}
