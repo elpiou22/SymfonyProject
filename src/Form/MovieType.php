@@ -17,7 +17,7 @@ class MovieType extends AbstractType
             ->add('releaseDate', null, [
                 'widget' => 'single_text'
             ])
-            ->add('Synopsis')
+            ->add('synopsis')
             ->add('director')
         ;
     }
