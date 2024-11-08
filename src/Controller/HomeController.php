@@ -138,15 +138,17 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/watch', 'app_movie_read')]
+    #[Route('/movies/{id}', 'app_movie_read')]
     public function read(
-        EntityManagerInterface $entityManager
+        Movie $movie,
+        EntityManagerInterface $entityManager,
+        int $id
     ): Response
     {
-        $movies = $entityManager->getRepository(Movie::class)->findAll();
+        $movie = $entityManager->getRepository(Movie::class)->find($id);
 
-        return $this->render('test.html.twig', [
-            'movies' => $movies
+        return $this->render('Movie/watch.html.twig', [
+            'movie' => $movie
         ]);
 
     }
