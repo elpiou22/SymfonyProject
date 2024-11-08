@@ -46,7 +46,7 @@ class HomeController extends AbstractController
         }
 
 
-        return $this->render('login.html.twig', [
+        return $this->render('Movie/login.html.twig', [
 
         ]);
     }
@@ -73,7 +73,7 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home'); // Redirection vers une page de succès
         }
 
-        return $this->render('create.html.twig', [
+        return $this->render('Movie/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
