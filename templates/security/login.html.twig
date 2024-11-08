@@ -1,45 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site de Streaming</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+<!-- Barre de navigation -->
+<nav class="navbar">
+    <div class="logo">MonFlix</div>
+    <ul class="nav-links">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="">Séries</a></li>
+        <li><a href="">Films</a></li>
+        <li><a href="">Nouveautés</a></li>
+        <li><a href="signin">Créer un compte</a></li>
 
-{% extends './layouts/base.html.twig' %}
-{% block title %} Login page {% endblock %}
+    </ul>
+</nav>
+<div class="container">
+    <h1>Bienvenue</h1>
 
+    <div class="form-toggle-btns">
+        <button style="background-color: #555555" onclick="showLoginForm()">Connexion</button>
+        <button style="background-color: #555555" onclick="showRegisterForm()">Inscription</button>
+    </div>
 
-
-{% block body %}
-    {% include './layouts/navbar.html.twig' %}
-
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
-
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+    {# Formulaire de Connexion #}
+    <div id="login-form" class="form-container active">
+        <h2>Se connecter</h2>
+        <form action="{{ path('app_signin') }}" method="post">
+            <div>
+                <label for="username">Email :</label>
+                <input style="background-color: #555555" type="text" id="username" name="_username" value="" required autofocus>
             </div>
-        {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Email</label>
-        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
+            <div>
+                <label for="password">Mot de passe :</label>
+                <input style="background-color: #555555" type="password" id="password" name="_password" required>
             </div>
-        #}
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+            <button style="background-color: #555555" type="submit">Se connecter</button>
+        </form>
+    </div>
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
-{% endblock %}
+    {# Formulaire d'Inscription #}
+    <div id="register-form" class="form-container">
+        {{ form_start(registrationForm) }}
+        {{ form_widget(registrationForm) }}
+        <button type="submit">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
+
+
+
+
+<script>
+    function showLoginForm() {
+        document.getElementById('login-form').classList.add('active');
+        document.getElementById('register-form').classList.remove('active');
+        console.log("show login form");
+    }
+
+    function showRegisterForm() {
+        document.getElementById('register-form').classList.add('active');
+        document.getElementById('login-form').classList.remove('active');
+        console.log("show register form")
+    }
+</script>
+</body>
+</html>
