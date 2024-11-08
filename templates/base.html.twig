@@ -45,8 +45,10 @@
 
             <th>{{ movie.getSynopsis }}</th>
             <th>{{ movie.getReleaseDate | date }}</th>
+            {% if is_granted("ROLE_ADMIN") %}
             <th> <a href="movies/update/{{ movie.getId }}"> Update </a></th>
             <th> <a href="movies/delete/{{ movie.getId }}"> Delete </a></th>
+            {%  endif %}
 
         </tr>
         {% endfor %}
