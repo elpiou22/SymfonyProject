@@ -1,5 +1,6 @@
-<?php
 
+<?php
+/*
 
 namespace App\Controller;
 
@@ -19,7 +20,7 @@ use App\Entity\User;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
-class HomeController extends AbstractController
+class temp extends AbstractController
 {
 
     #[Route('/', name: 'home')]
@@ -61,7 +62,7 @@ class HomeController extends AbstractController
 
 
     #[Route('/signin', name: 'app_signin')]
-    public function signin(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    public function loginn(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -153,22 +154,7 @@ class HomeController extends AbstractController
 
     }
 
-    #[Route('/profile', name: 'app_profile')]
-    #[IsGranted("IS_AUTHENTICATED_FULLY")]
-    public function profile(): Response
-    {
-
-        $user = $this->getUser();
-
-         if (!$user) {
-            throw $this->createNotFoundException('Utilisateur non trouvé');
-        }
-
-        return $this->render('security/account.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
 
 
 }
+*/

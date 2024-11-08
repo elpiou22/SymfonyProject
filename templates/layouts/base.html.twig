@@ -5,9 +5,7 @@
         {% block head %}
             <meta charset="UTF-8">
             <title>
-                {% block title %}
-                    {{ throw new Exception("Le titre doit obligatoirement être implémenté.") }}
-                {% endblock title %}
+                {{ block('title') }}
             </title>
 
             <link rel="stylesheet"
