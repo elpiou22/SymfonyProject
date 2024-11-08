@@ -1,11 +1,17 @@
+{% extends './layouts/base.html.twig' %}
+{% block title %} {{ movie.getName }} {% endblock %}
 
 
 
+{% block body %}
+    {% include './layouts/navbar.html.twig' %}
 
-{{ movie.getId }}
+    {{ movie.getId }}
 
-{{ movie.getName }}
+    {{ movie.getName }}
 
-{{ movie.getSynopsis }}
+    {{ movie.getSynopsis }}
 
-{{ movie.getReleaseDate | date }}
+    {{ movie.getReleaseDate | date }}
+
+{% endblock body %}

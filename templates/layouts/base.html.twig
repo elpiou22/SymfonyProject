@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% block html %}
+    <html lang="fr">
+        <head>
+        {% block head %}
+            <meta charset="UTF-8">
+            <title>
+                {% block title %}
+                    {{ throw new Exception("Le titre doit obligatoirement être implémenté.") }}
+                {% endblock title %}
+            </title>
+
+            <link rel="stylesheet"
+                {% block style %}
+                    href="{{ asset('css/style.css') }}"
+                {% endblock style %}
+            >
+
+        {% endblock head %}
+        </head>
+    <body>
+    {% block body %}
+
+    {% endblock body %}
+    </body>
+    </html>
+{% endblock html%}

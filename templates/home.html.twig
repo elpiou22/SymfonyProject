@@ -1,17 +1,23 @@
-{% extends 'banner.html.twig' %}
+{% extends './layouts/base.html.twig' %}
 
-{# {% block title %}Accueil - Mon Site de Streaming{% endblock %}
-<!-- Bannière principale -->
-<!--<section class="banner">
-    <div class="banner-content">
-        <h1>Film du Moment</h1>
-        <p>Regardez le dernier film à succès dès maintenant !</p>
-        <button>Lire</button>
-        <button>Ajouter à Ma Liste</button>
-    </div>
-</section> -->#}
+{#
 
-{% block content %}
+{% block title %} Home {% endblock title %}
+
+#}
+
+{% block body %}
+    {% include './layouts/navbar.html.twig' %}
+
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Film du Moment</h1>
+            <p>Regardez le dernier film à succès dès maintenant !</p>
+            <button>Lire</button>
+            <button>Ajouter à Ma Liste</button>
+        </div>
+    </section>
+
     <section class="categories">
         <div class="movie-row">
             {% for movie in movies %}
@@ -28,5 +34,5 @@
             {% endfor %}
         </div>
     </section>
-{% endblock %}
 
+{% endblock body %}

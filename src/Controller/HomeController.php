@@ -31,7 +31,7 @@ class HomeController extends AbstractController
 
 
 
-        return $this->render('base.html.twig', [
+        return $this->render('home.html.twig', [
             "image_path" => $default_image,
             'movies' => $movies
         ]);
@@ -153,16 +153,6 @@ class HomeController extends AbstractController
 
     }
 
-    #[Route('/movies', name: 'movies_list')]
-    public function list(EntityManagerInterface $entityManager): Response
-    {
-        // Récupérer tous les films de la base de données
-        $movies = $entityManager->getRepository(Movie::class)->findAll();
 
-        // Rendu de la vue avec les films
-        return $this->render('movies/movies.html.twig', [
-            'movies' => $movies,
-        ]);
-    }
 
 }

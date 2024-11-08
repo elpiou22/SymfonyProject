@@ -1,9 +1,12 @@
 
-{#{% extends 'banner.html.twig' %}  #}
+{% extends './layouts/base.html.twig' %}
+{% block title %} Login page {% endblock %}
 
-{% block title %}Log in!{% endblock %}
+
 
 {% block body %}
+    {% include './layouts/navbar.html.twig' %}
+
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

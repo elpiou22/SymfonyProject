@@ -1,13 +1,11 @@
 {% extends './layouts/base.html.twig' %}
+{% block title %} Modifier le film {% endblock %}
 
-{% block title %} Upload un film {% endblock title %}
 
 
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
-
-    <h1>Create a movie</h1>
-
+    <h1>Update a movie</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
