@@ -49,30 +49,10 @@
 
     {# Formulaire d'Inscription #}
     <div id="register-form" class="form-container">
-
-        <h2>Créer un compte</h2>
-        <form action="{{ path('app_register') }}" method="POST">
-
-            <div>
-                <label for="fullname">Nom complet</label>
-                <input type="text" id="fullname" name="fullname" required>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div>
-                <label for="confirm-password">Confirmer le mot de passe</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
-
-            <button type="submit">S'inscrire</button>
-        </form>
-
+        {{ form_start(registrationForm) }}
+        {{ form_widget(registrationForm) }}
+        <button type="submit">S'inscrire</button>
+        {{ form_end(registrationForm) }}
     </div>
 </div>
 
