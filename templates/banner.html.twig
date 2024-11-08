@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Site de Streaming{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+<!-- Barre de navigation -->
+<nav class="navbar">
+    <div class="logo">MonFlix</div>
+    <ul class="nav-links">
+        <li><a href="{{ path('home') }}">Accueil</a></li>
+        <li><a href="">Séries</a></li>
+        <li><a href="">Films</a></li>
+        <li><a href="">Nouveautés</a></li>
+        <li><a href="{{ path('app_signin') }}">Créer un compte</a></li>
+    </ul>
+</nav>
+
+<!-- Bannière principale -->
+<section class="banner">
+    <div class="banner-content">
+        <h1>Film du Moment</h1>
+        <p>Regardez le dernier film à succès dès maintenant !</p>
+        <button>Lire</button>
+        <button>Ajouter à Ma Liste</button>
+    </div>
+</section>
+
+<!-- Bloc pour le contenu spécifique à chaque page -->
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

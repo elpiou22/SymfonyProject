@@ -1,0 +1,34 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a movie</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+<h1>Account information</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Surname</th>
+        <th>Firstname</th>
+        <th>Birthdate</th>
+        <th>Password</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.getId }}</td>
+            <td>{{ user.getEmail }}</td>
+            <td>{{ user.getSurname }}</td>
+            <td>{{ user.getFirstname }}</td>
+            <td>{{ user.getBirthdate | date }}</td>
+            <td>{{ user.getPassword }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

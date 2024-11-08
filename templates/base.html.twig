@@ -1,57 +1,20 @@
-<!DOCTYPE html>
+{% extends 'banner.html.twig' %}
 
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site de Streaming</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {% endblock %}
-</head>
-<body>
-<!-- Barre de navigation -->
-<nav class="navbar">
-    <div class="logo">MonFlix</div>
-    <ul class="nav-links">
-        <li><a href="">Accueil</a></li>
-        <li><a href="#">Séries</a></li>
-        <li><a href="#">Films</a></li>
-        <li><a href="#">Nouveautés</a></li>
-        <li><a href="login">Créer un compte</a></li>
+{% block title %}Accueil - Mon Site de Streaming{% endblock %}
 
-    </ul>
-</nav>
-
-<!-- Bannière principale -->
-<section class="banner">
-    <div class="banner-content">
-        <h1>Film du Moment</h1>
-        <p>Regardez le dernier film à succès dès maintenant !</p>
-        <button>Lire</button>
-        <button>Ajouter à Ma Liste</button>
-    </div>
-</section>
-
-<!-- Sections des catégories -->
-<section class="categories">
-    <div class="movie-row">
-        {% for movie in movies %}
-
-        <tr>
-            <th><img src="{{ asset(image_path) }}" alt="Film 1"></th>
-            <th>{{ movie.getId }}</th>
-            <th>{{ movie.getName }}</th>
-
-            <th>{{ movie.getSynopsis }}</th>
-            <th>{{ movie.getReleaseDate | date }}</th>
-            <th> <a href="movies/update/{{ movie.getId }}"> Update </a></th>
-            <th> <a href="movies/delete/{{ movie.getId }}"> Delete </a></th>
-
-        </tr>
-        {% endfor %}
-    </div>
-</section>
-</body>
-
-
+{% block content %}
+    <section class="categories">
+        <div class="movie-row">
+            {% for movie in movies %}
+                <div class="movie-item">
+                    <img src="{{ asset(image_path) }}" alt="Film {{ movie.getName }}">
+                    <h3>{{ movie.getName }}</h3>
+                    <p>{{ movie.getSynopsis }}</p>
+                    <p>Sortie : {{ movie.getReleaseDate|date('d-m-Y') }}</p>
+                    <a href="{{ path('app_movie_update', { 'id': movie.getId }) }}">Update</a>
+                    <a href="">Delete</a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
