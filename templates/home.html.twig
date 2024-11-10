@@ -18,7 +18,7 @@
         <div class="movie-row">
             {% for movie in movies %}
                 <div class="movie-item">
-                    <img src="{{ asset(image_path) }}" alt="Film {{ movie.getName }}">
+                    <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset(image_path) }}" alt="Film {{ movie.getName }}">
                     <h3>{{ movie.getName }}</h3>
                     <p>{{ movie.getSynopsis }}</p>
                     <p>Sortie : {{ movie.getReleaseDate|date('d-m-Y') }}</p>

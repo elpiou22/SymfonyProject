@@ -2,15 +2,17 @@
 
 {% block title %} Upload un film {% endblock title %}
 
-
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
 
-    <h1>Create a movie</h1>
+    <h1 class="form-title">Créer un film</h1>
 
-
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-primary">Save</button>
-    {{ form_end(form) }}
+    <div class="form-container">
+        {{ form_start(form) }}
+        <div class="form-fields">
+            {{ form_widget(form) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock body %}

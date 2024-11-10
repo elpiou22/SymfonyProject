@@ -37,13 +37,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-
-
-
-
-
-
-
     #[Route('/signin', name: 'app_signin')]
     public function signin(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
     {
@@ -79,7 +72,7 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/create', name: 'movie_create')]
+    #[Route('/create', name: 'app_create')]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $movie = new Movie();

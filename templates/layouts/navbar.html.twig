@@ -12,5 +12,8 @@
             <li><a href="{{ path('app_profile') }}">Profil</a></li>
             <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
         {% endif %}
+        {% if (is_granted("ROLE_ADMIN")) %}
+            <li><a href="{{ path('app_create') }}">Ajouter un film</a></li>
+        {% endif %}
     </ul>
 </nav>
