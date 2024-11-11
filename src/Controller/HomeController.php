@@ -69,6 +69,7 @@ class HomeController extends AbstractController
                 $form->get('password')->getData()
             );
             $user->setPassword($hashedPassword);
+            $user->setRoles(['ROLE_USER']);
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -77,11 +78,11 @@ class HomeController extends AbstractController
                 ->from('donotreply@monflix.com')
                 ->to($form->get('email')->getData())
                 ->subject('Votre compte MonFlix est bien créé.')
-                ->text('' -
-                'Bonjour ' - $form->get('firstname')->getData() - ',\n' -
-                'Merci pour votre inscription au site MonFlix.' -
-                'Profitez bien de votre expérience chez nous.' -
-                'Cordialement, ' -
+                ->text('' .
+                'Bonjour ' . $form->get('firstname')->getData() . ',\n' .
+                'Merci pour votre inscription au site MonFlix.' .
+                'Profitez bien de votre expérience chez nous.' .
+                'Cordialement, ' .
                 'L\'équipe MonFlix.'
                 );
 

@@ -35,7 +35,7 @@
                     <td>
                         <a href="movies/watch/{{ movie.id }}">
                         {% if movie.coverImage %}
-                            <img src="{{ asset('uploads/covers/' ~ movie.coverImage) }}" alt="Image de couverture">
+                            <img src="{{ asset('uploads/covers/' ~ movie.coverImage) }}" alt="Film">
                         {% else %}
                             <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset(image_path) }}" alt="Film {{ movie.getTitle }}">
                         {% endif %}

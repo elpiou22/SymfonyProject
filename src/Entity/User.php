@@ -7,9 +7,12 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[Vich\Uploadable]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -26,6 +29,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 180, nullable: true)]
     private ?string $firstname = null;
+
+
+
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $profilePicture = null;
+
+    #[Vich\UploadableField(mapping: 'profile_pictures', fileNameProperty: 'profilePicture')]
+    private ?File $profilePictureFile = null;
+
+
+
 
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -46,6 +61,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+
+
+    /**
+     * @return string|null
+     */
+    public function getProfilePicture(): ?string
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param string|null $profilePicture
+     */
+    public function setProfilePicture(?string $profilePicture): void
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getProfilePictureFile(): ?File
+    {
+        return $this->profilePictureFile;
+    }
+
+    /**
+     * @param File|null $profilePictureFile
+     */
+    public function setProfilePictureFile(?File $profilePictureFile): void
+    {
+        $this->profilePictureFile = $profilePictureFile;
     }
 
 
@@ -110,6 +159,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstname(?string $firstname): void
     {
         $this->firstname = $firstname;
+    }
+
+    public function getEmailReplaced(): string{
+
+        return preg_replace('/[^a-zA-Z0-9-_]/', '_', $this->getEmail());
+
     }
 
 

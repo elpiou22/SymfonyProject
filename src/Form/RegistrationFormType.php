@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -20,16 +22,21 @@ class RegistrationFormType extends AbstractType
             ->add('birthdate', null, [
                 'widget' => 'single_text'
             ])
+            ->add('profilePictureFile', FileType::class, [
+                'label' => 'Photo de profil',
+                'required' => true,
+            ])
+            /*
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'User' => 'ROLE_USER',
-                    'Admin' => 'ROLE_ADMIN',
-                    'Manager' => 'ROLE_MANAGER',
+                    'Admin' => 'ROLE_ADMIN'
                 ],
                 'multiple' => true,
-                'expanded' => true, // utiliser des cases à cocher pour une sélection plus intuitive
+                'expanded' => true,
             ])
-            ->add('password')
+            */
+            ->add('password', PasswordType::class)
         ;
     }
 

@@ -6,6 +6,11 @@
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
     <h1>Account information</h1>
+    {% if user.profilePicture %}
+        <img src="{{ asset('uploads/profile_pictures/' ~ user.getEmailReplaced) ~ '.png' }}" alt="Film">
+    {% else %}
+        <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset(image_path) }}" alt="Film {{ movie.getTitle }}">
+    {% endif %}
     <table>
         <thead>
         <tr>

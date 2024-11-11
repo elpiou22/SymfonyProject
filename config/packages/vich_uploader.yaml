@@ -9,3 +9,7 @@ vich_uploader:
             uri_prefix: /uploads/movies
             upload_destination: '%kernel.project_dir%/public/uploads/movies'
             namer: App\Service\MovieTitleNamer
+        profile_pictures:
+            uri_prefix: /uploads/profile_pictures
+            upload_destination: '%kernel.project_dir%/public/uploads/profile_pictures'
+            namer: App\Service\UserNamer
