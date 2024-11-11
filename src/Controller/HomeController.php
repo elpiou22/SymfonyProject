@@ -77,7 +77,6 @@ class HomeController extends AbstractController
     {
         $movie = new Movie();
         $form = $this->createForm(MovieType::class, $movie);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

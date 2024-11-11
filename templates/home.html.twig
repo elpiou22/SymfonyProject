@@ -15,20 +15,38 @@
     </section>
 
     <section class="categories">
-        <div class="movie-row">
+        <table class="movie-table">
+            <thead>
+            <tr>
+                <th>Affiche</th>
+                <th>Titre</th>
+                <th>Synopsis</th>
+                <th>Date de sortie</th>
+                {% if is_granted("ROLE_ADMIN") %}
+                    <th>Actions</th>
+                {% endif %}
+            </tr>
+            </thead>
+            <tbody>
             {% for movie in movies %}
-                <div class="movie-item">
-                    <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset(image_path) }}" alt="Film {{ movie.getName }}">
-                    <h3>{{ movie.getName }}</h3>
-                    <p>{{ movie.getSynopsis }}</p>
-                    <p>Sortie : {{ movie.getReleaseDate|date('d-m-Y') }}</p>
+                <tr class="movie-row">
+                    <td>
+                        <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset(image_path) }}" alt="Film {{ movie.getName }}">
+                    </td>
+                    <td>{{ movie.getName }}</td>
+                    <td>{{ movie.getSynopsis }}</td>
+                    <td>{{ movie.getReleaseDate|date('d-m-Y') }}</td>
                     {% if is_granted("ROLE_ADMIN") %}
-                        <th> <a href="movies/update/{{ movie.getId }}"> Update </a></th>
-                        <th> <a href="movies/delete/{{ movie.getId }}"> Delete </a></th>
-                    {%  endif %}
-                </div>
+                        <td>
+                            <a href="movies/update/{{ movie.getId }}">Update</a> |
+                            <a href="movies/delete/{{ movie.getId }}">Delete</a>
+                        </td>
+                    {% endif %}
+                </tr>
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
     </section>
+
 
 {% endblock body %}

@@ -18,7 +18,7 @@ security:
             provider: app_user_provider
             form_login:
                 login_path: app_signin
-                check_path: app_signin #
+                check_path: app_signin # commented = signin ; not commented = login
                 enable_csrf: true
                 username_parameter: registration_form[email]
             logout:

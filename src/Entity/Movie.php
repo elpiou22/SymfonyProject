@@ -15,6 +15,7 @@ class Movie
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #private ?string $title = null;
     private ?string $name = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]

@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site de Streaming</title>
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {% endblock %}
-</head>
-<body>
-<!-- Barre de navigation -->
-<nav class="navbar">
-    <div class="logo">MonFlix</div>
-    <ul class="nav-links">
-        <li><a href="/">Accueil</a></li>
-        <li><a href="">Séries</a></li>
-        <li><a href="">Films</a></li>
-        <li><a href="">Nouveautés</a></li>
-        <li><a href="signin">Créer un compte</a></li>
+{% extends './layouts/base.html.twig' %}
 
-    </ul>
-</nav>
+{% block title %} Login {% endblock title %}
+
+
+{% block body %}
+    {% include './layouts/navbar.html.twig' %}
+
+
 <div class="container">
     <h1>Bienvenue</h1>
 
@@ -74,5 +60,4 @@
         console.log("show register form")
     }
 </script>
-</body>
-</html>
+{% endblock body %}
