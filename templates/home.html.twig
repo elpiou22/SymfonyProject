@@ -38,10 +38,14 @@
                     <td>{{ movie.getReleaseDate|date('d-m-Y') }}</td>
                     {% if is_granted("ROLE_ADMIN") %}
                         <td>
-                            <a href="movies/update/{{ movie.getId }}">Update</a> |
-                            <a href="movies/delete/{{ movie.getId }}">Delete</a>
+                            <a href="{{ path('app_movie_update', { id: movie.getId }) }}">Update</a> |
+                            <form action="{{ path('app_movie_delete', { id: movie.getId }) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" onclick="return confirm('Are you sure you want to delete this movie?');">Delete</button>
+                            </form>
                         </td>
                     {% endif %}
+
                 </tr>
             {% endfor %}
             </tbody>

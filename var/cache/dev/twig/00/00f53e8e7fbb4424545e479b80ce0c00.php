@@ -161,25 +161,29 @@ class __TwigTemplate_81c679662f8cf4c80357874ef640b6f5 extends Template
             if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
                 // line 40
                 yield "                        <td>
-                            <a href=\"movies/update/";
+                            <a href=\"";
                 // line 41
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["movie"], "getId", [], "any", false, false, false, 41), "html", null, true);
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_movie_update", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["movie"], "getId", [], "any", false, false, false, 41)]), "html", null, true);
                 yield "\">Update</a> |
-                            <a href=\"movies/delete/";
+                            <form action=\"";
                 // line 42
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["movie"], "getId", [], "any", false, false, false, 42), "html", null, true);
-                yield "\">Delete</a>
+                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_movie_delete", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["movie"], "getId", [], "any", false, false, false, 42)]), "html", null, true);
+                yield "\" method=\"post\" style=\"display:inline;\">
+                                <input type=\"hidden\" name=\"_method\" value=\"DELETE\">
+                                <button type=\"submit\" onclick=\"return confirm('Are you sure you want to delete this movie?');\">Delete</button>
+                            </form>
                         </td>
                     ";
             }
-            // line 45
-            yield "                </tr>
+            // line 48
+            yield "
+                </tr>
             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['movie'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 47
+        // line 51
         yield "            </tbody>
         </table>
     </section>
@@ -216,7 +220,7 @@ class __TwigTemplate_81c679662f8cf4c80357874ef640b6f5 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  183 => 47,  176 => 45,  170 => 42,  166 => 41,  163 => 40,  161 => 39,  157 => 38,  153 => 37,  149 => 36,  142 => 34,  138 => 32,  134 => 31,  129 => 28,  125 => 26,  123 => 25,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  187 => 51,  179 => 48,  170 => 42,  166 => 41,  163 => 40,  161 => 39,  157 => 38,  153 => 37,  149 => 36,  142 => 34,  138 => 32,  134 => 31,  129 => 28,  125 => 26,  123 => 25,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -261,10 +265,14 @@ class __TwigTemplate_81c679662f8cf4c80357874ef640b6f5 extends Template
                     <td>{{ movie.getReleaseDate|date('d-m-Y') }}</td>
                     {% if is_granted(\"ROLE_ADMIN\") %}
                         <td>
-                            <a href=\"movies/update/{{ movie.getId }}\">Update</a> |
-                            <a href=\"movies/delete/{{ movie.getId }}\">Delete</a>
+                            <a href=\"{{ path('app_movie_update', { id: movie.getId }) }}\">Update</a> |
+                            <form action=\"{{ path('app_movie_delete', { id: movie.getId }) }}\" method=\"post\" style=\"display:inline;\">
+                                <input type=\"hidden\" name=\"_method\" value=\"DELETE\">
+                                <button type=\"submit\" onclick=\"return confirm('Are you sure you want to delete this movie?');\">Delete</button>
+                            </form>
                         </td>
                     {% endif %}
+
                 </tr>
             {% endfor %}
             </tbody>

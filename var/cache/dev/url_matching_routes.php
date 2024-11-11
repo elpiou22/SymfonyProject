@@ -44,6 +44,7 @@ return [
                 .'|/movies/(?'
                     .'|update/([^/]++)(*:228)'
                     .'|([^/]++)(*:244)'
+                    .'|delete/([^/]++)(*:267)'
                 .')'
             .')/?$}sDu',
     ],
@@ -57,8 +58,9 @@ return [
         181 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         191 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         228 => [[['_route' => 'app_movie_update', '_controller' => 'App\\Controller\\HomeController::update'], ['id'], null, null, false, true, null]],
-        244 => [
-            [['_route' => 'app_movie_read', '_controller' => 'App\\Controller\\HomeController::read'], ['id'], null, null, false, true, null],
+        244 => [[['_route' => 'app_movie_read', '_controller' => 'App\\Controller\\HomeController::read'], ['id'], null, null, false, true, null]],
+        267 => [
+            [['_route' => 'app_movie_delete', '_controller' => 'App\\Controller\\HomeController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

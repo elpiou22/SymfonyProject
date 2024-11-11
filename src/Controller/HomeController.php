@@ -7,9 +7,9 @@ use App\Form\MovieType;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
-
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -109,7 +109,7 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home'); // Redirection vers une page de succès
         }
 
-        return $this->render('update.html.twig', [
+        return $this->render('Movie/update.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -128,6 +128,18 @@ class HomeController extends AbstractController
         ]);
 
     }
+
+    #[Route('/movies/delete/{id}', name: 'app_movie_delete', methods: ['POST'])]
+    public function delete(Movie $movie, EntityManagerInterface $entityManager): RedirectResponse
+    {
+        $entityManager->remove($movie);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'Le film a été supprimé avec succès.');
+
+        return $this->redirectToRoute('home');
+    }
+
 
     #[Route('/profile', name: 'app_profile')]
     #[IsGranted("IS_AUTHENTICATED_FULLY")]

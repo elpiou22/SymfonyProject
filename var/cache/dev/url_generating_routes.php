@@ -23,6 +23,7 @@ return [
     'app_create' => [[], ['_controller' => 'App\\Controller\\HomeController::create'], [], [['text', '/create']], [], [], []],
     'app_movie_update' => [['id'], ['_controller' => 'App\\Controller\\HomeController::update'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/movies/update']], [], [], []],
     'app_movie_read' => [['id'], ['_controller' => 'App\\Controller\\HomeController::read'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/movies']], [], [], []],
+    'app_movie_delete' => [['id'], ['_controller' => 'App\\Controller\\HomeController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/movies/delete']], [], [], []],
     'app_profile' => [[], ['_controller' => 'App\\Controller\\HomeController::profile'], [], [['text', '/profile']], [], [], []],
     'app_logout' => [[], [], [], [['text', '/logout']], [], [], []],
     'App\Controller\HomeController::index' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], [], []],
@@ -31,5 +32,6 @@ return [
     'App\Controller\HomeController::create' => [[], ['_controller' => 'App\\Controller\\HomeController::create'], [], [['text', '/create']], [], [], []],
     'App\Controller\HomeController::update' => [['id'], ['_controller' => 'App\\Controller\\HomeController::update'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/movies/update']], [], [], []],
     'App\Controller\HomeController::read' => [['id'], ['_controller' => 'App\\Controller\\HomeController::read'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/movies']], [], [], []],
+    'App\Controller\HomeController::delete' => [['id'], ['_controller' => 'App\\Controller\\HomeController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/movies/delete']], [], [], []],
     'App\Controller\HomeController::profile' => [[], ['_controller' => 'App\\Controller\\HomeController::profile'], [], [['text', '/profile']], [], [], []],
 ];
