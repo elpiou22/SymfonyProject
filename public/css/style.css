@@ -106,7 +106,7 @@ h1 {
 
 .form-container h2 {
     text-align: center;
-    color: #46484f;
+    color: #999b9f;
     margin-bottom: 15px;
     font-size: 24px;
 }
@@ -233,7 +233,7 @@ button:hover {
 .form-toggle-btns button {
     padding: 12px 20px;
     background-color: #555555;
-    color: #696969;
+    color: #eeeeee;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -313,4 +313,67 @@ button:hover {
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 400px; /* Espace pour éviter le chevauchement avec la navbar */
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #46484f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h1{
+    color: white;
+}
+
+.profile-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.profile-table th, .profile-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.profile-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.profile-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
 }

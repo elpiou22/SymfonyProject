@@ -73,7 +73,7 @@ class __TwigTemplate_9368a11178dba3455fd18c68c4f18358 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield " Login ";
+        yield "Login";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -83,7 +83,7 @@ class __TwigTemplate_9368a11178dba3455fd18c68c4f18358 extends Template
         yield from [];
     }
 
-    // line 6
+    // line 5
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -96,82 +96,74 @@ class __TwigTemplate_9368a11178dba3455fd18c68c4f18358 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 7
+        // line 6
         yield "    ";
-        yield from         $this->loadTemplate("./layouts/navbar.html.twig", "security/login.html.twig", 7)->unwrap()->yield($context);
-        // line 8
+        yield from         $this->loadTemplate("./layouts/navbar.html.twig", "security/login.html.twig", 6)->unwrap()->yield($context);
+        // line 7
         yield "
+    <div class=\"container\">
+        <h1>Bienvenue</h1>
 
-<div class=\"container\">
-    <h1>Bienvenue</h1>
+        <div class=\"form-toggle-btns\">
+            <button style=\"background-color: #555555\" onclick=\"showLoginForm()\">Connexion</button>
+            <button style=\"background-color: #555555\" onclick=\"showRegisterForm()\">Inscription</button>
+        </div>
 
-    <div class=\"form-toggle-btns\">
-        <button style=\"background-color: #555555\" onclick=\"showLoginForm()\">Connexion</button>
-        <button style=\"background-color: #555555\" onclick=\"showRegisterForm()\">Inscription</button>
-    </div>
-
-    ";
+        ";
+        // line 17
+        yield "        <div id=\"login-form\" class=\"form-container active\">
+            <h2>Se connecter</h2>
+            <form action=\"";
         // line 19
-        yield "    <div id=\"login-form\" class=\"form-container active\">
-        <h2>Se connecter</h2>
-        <form action=\"";
-        // line 21
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_signin");
         yield "\" method=\"post\">
-            <div>
-                <label for=\"username\">Email :</label>
-                <input style=\"background-color: #555555\" type=\"text\" id=\"username\" name=\"registration_form[email]\" value=\"\" required autofocus>
-            </div>
+                <div>
+                    <label for=\"username\">Email :</label>
+                    <input style=\"background-color: #555555\" type=\"text\" id=\"username\" name=\"registration_form[email]\" required autofocus>
+                </div>
 
-            <div>
-                <label for=\"password\">Mot de passe :</label>
-                <input style=\"background-color: #555555\" type=\"password\" id=\"password\" name=\"_password\" required>
-            </div>
-            <input type=\"hidden\" name=\"_csrf_token\"
-                   value=\"";
-        // line 32
+                <div>
+                    <label for=\"password\">Mot de passe :</label>
+                    <input style=\"background-color: #555555\" type=\"password\" id=\"password\" name=\"_password\" required>
+                </div>
+                <input type=\"hidden\" name=\"_csrf_token\" value=\"";
+        // line 29
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
-        yield "\"
-            >
-            <button style=\"background-color: #555555\" type=\"submit\">Se connecter</button>
-        </form>
-    </div>
+        yield "\">
+                <button style=\"background-color: #555555\" type=\"submit\">Se connecter</button>
+            </form>
+        </div>
 
-    ";
+        ";
+        // line 35
+        yield "        <div id=\"register-form\" class=\"form-container\" style=\"display: none;\">
+            ";
+        // line 36
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 36, $this->source); })()), 'form_start');
+        yield "
+            ";
+        // line 37
+        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 37, $this->source); })()), 'widget');
+        yield "
+            <button type=\"submit\">S'inscrire</button>
+            ";
         // line 39
-        yield "    <div id=\"register-form\" class=\"form-container\">
-        ";
-        // line 40
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 40, $this->source); })()), 'form_start');
+        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 39, $this->source); })()), 'form_end');
         yield "
-        ";
-        // line 41
-        yield $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 41, $this->source); })()), 'widget');
-        yield "
-        <button type=\"submit\">S'inscrire</button>
-        ";
-        // line 43
-        yield         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["registrationForm"]) || array_key_exists("registrationForm", $context) ? $context["registrationForm"] : (function () { throw new RuntimeError('Variable "registrationForm" does not exist.', 43, $this->source); })()), 'form_end');
-        yield "
+        </div>
     </div>
-</div>
 
+    <script>
+        function showLoginForm() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+        }
 
-
-
-<script>
-    function showLoginForm() {
-        document.getElementById('login-form').classList.add('active');
-        document.getElementById('register-form').classList.remove('active');
-        console.log(\"show login form\");
-    }
-
-    function showRegisterForm() {
-        document.getElementById('register-form').classList.add('active');
-        document.getElementById('login-form').classList.remove('active');
-        console.log(\"show register form\")
-    }
-</script>
+        function showRegisterForm() {
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+        }
+    </script>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -203,73 +195,64 @@ class __TwigTemplate_9368a11178dba3455fd18c68c4f18358 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  154 => 43,  149 => 41,  145 => 40,  142 => 39,  133 => 32,  119 => 21,  115 => 19,  103 => 8,  100 => 7,  87 => 6,  64 => 3,  41 => 1,);
+        return array (  151 => 39,  146 => 37,  142 => 36,  139 => 35,  131 => 29,  118 => 19,  114 => 17,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends './layouts/base.html.twig' %}
 
-{% block title %} Login {% endblock title %}
-
+{% block title %}Login{% endblock title%}
 
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
 
+    <div class=\"container\">
+        <h1>Bienvenue</h1>
 
-<div class=\"container\">
-    <h1>Bienvenue</h1>
+        <div class=\"form-toggle-btns\">
+            <button style=\"background-color: #555555\" onclick=\"showLoginForm()\">Connexion</button>
+            <button style=\"background-color: #555555\" onclick=\"showRegisterForm()\">Inscription</button>
+        </div>
 
-    <div class=\"form-toggle-btns\">
-        <button style=\"background-color: #555555\" onclick=\"showLoginForm()\">Connexion</button>
-        <button style=\"background-color: #555555\" onclick=\"showRegisterForm()\">Inscription</button>
+        {# Formulaire de Connexion #}
+        <div id=\"login-form\" class=\"form-container active\">
+            <h2>Se connecter</h2>
+            <form action=\"{{ path('app_signin') }}\" method=\"post\">
+                <div>
+                    <label for=\"username\">Email :</label>
+                    <input style=\"background-color: #555555\" type=\"text\" id=\"username\" name=\"registration_form[email]\" required autofocus>
+                </div>
+
+                <div>
+                    <label for=\"password\">Mot de passe :</label>
+                    <input style=\"background-color: #555555\" type=\"password\" id=\"password\" name=\"_password\" required>
+                </div>
+                <input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token('authenticate') }}\">
+                <button style=\"background-color: #555555\" type=\"submit\">Se connecter</button>
+            </form>
+        </div>
+
+        {# Formulaire d'Inscription #}
+        <div id=\"register-form\" class=\"form-container\" style=\"display: none;\">
+            {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm) }}
+            <button type=\"submit\">S'inscrire</button>
+            {{ form_end(registrationForm) }}
+        </div>
     </div>
 
-    {# Formulaire de Connexion #}
-    <div id=\"login-form\" class=\"form-container active\">
-        <h2>Se connecter</h2>
-        <form action=\"{{ path('app_signin') }}\" method=\"post\">
-            <div>
-                <label for=\"username\">Email :</label>
-                <input style=\"background-color: #555555\" type=\"text\" id=\"username\" name=\"registration_form[email]\" value=\"\" required autofocus>
-            </div>
+    <script>
+        function showLoginForm() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+        }
 
-            <div>
-                <label for=\"password\">Mot de passe :</label>
-                <input style=\"background-color: #555555\" type=\"password\" id=\"password\" name=\"_password\" required>
-            </div>
-            <input type=\"hidden\" name=\"_csrf_token\"
-                   value=\"{{ csrf_token('authenticate') }}\"
-            >
-            <button style=\"background-color: #555555\" type=\"submit\">Se connecter</button>
-        </form>
-    </div>
-
-    {# Formulaire d'Inscription #}
-    <div id=\"register-form\" class=\"form-container\">
-        {{ form_start(registrationForm) }}
-        {{ form_widget(registrationForm) }}
-        <button type=\"submit\">S'inscrire</button>
-        {{ form_end(registrationForm) }}
-    </div>
-</div>
-
-
-
-
-<script>
-    function showLoginForm() {
-        document.getElementById('login-form').classList.add('active');
-        document.getElementById('register-form').classList.remove('active');
-        console.log(\"show login form\");
-    }
-
-    function showRegisterForm() {
-        document.getElementById('register-form').classList.add('active');
-        document.getElementById('login-form').classList.remove('active');
-        console.log(\"show register form\")
-    }
-</script>
+        function showRegisterForm() {
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+        }
+    </script>
 {% endblock body %}
 ", "security/login.html.twig", "C:\\Users\\amaury\\Documents\\B2\\PHP\\Projet\\SymfonyProject\\templates\\security\\login.html.twig");
     }

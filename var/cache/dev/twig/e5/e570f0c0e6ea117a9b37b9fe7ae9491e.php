@@ -60,7 +60,7 @@ class __TwigTemplate_c29918be1881c8c57439f64c59634cbd extends Template
 
     }
 
-    // line 2
+    // line 3
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -73,7 +73,7 @@ class __TwigTemplate_c29918be1881c8c57439f64c59634cbd extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield " Profil ";
+        yield "Profil";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -83,7 +83,7 @@ class __TwigTemplate_c29918be1881c8c57439f64c59634cbd extends Template
         yield from [];
     }
 
-    // line 6
+    // line 5
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -96,47 +96,51 @@ class __TwigTemplate_c29918be1881c8c57439f64c59634cbd extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 7
+        // line 6
         yield "    ";
-        yield from         $this->loadTemplate("./layouts/navbar.html.twig", "security/account.html.twig", 7)->unwrap()->yield($context);
-        // line 8
-        yield "    <h1>Account information</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th>Surname</th>
-            <th>Firstname</th>
-            <th>Birthdate</th>
-        </tr>
-        </thead>
-        <tbody>
+        yield from         $this->loadTemplate("./layouts/navbar.html.twig", "security/account.html.twig", 6)->unwrap()->yield($context);
+        // line 7
+        yield "
+    <div class=\"profile-container\">
+        <h1 class=\"profile-title\">Account Information</h1>
+
+        <table class=\"profile-table\">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Surname</th>
+                <th>Firstname</th>
+                <th>Birthdate</th>
+            </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>";
-        // line 21
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 21, $this->source); })()), "getId", [], "any", false, false, false, 21), "html", null, true);
-        yield "</td>
-                <td>";
-        // line 22
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 22, $this->source); })()), "getEmail", [], "any", false, false, false, 22), "html", null, true);
-        yield "</td>
-                <td>";
         // line 23
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 23, $this->source); })()), "getSurname", [], "any", false, false, false, 23), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 23, $this->source); })()), "getId", [], "any", false, false, false, 23), "html", null, true);
         yield "</td>
                 <td>";
         // line 24
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 24, $this->source); })()), "getFirstname", [], "any", false, false, false, 24), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 24, $this->source); })()), "getEmail", [], "any", false, false, false, 24), "html", null, true);
         yield "</td>
                 <td>";
         // line 25
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 25, $this->source); })()), "getBirthdate", [], "any", false, false, false, 25)), "html", null, true);
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 25, $this->source); })()), "getSurname", [], "any", false, false, false, 25), "html", null, true);
+        yield "</td>
+                <td>";
+        // line 26
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 26, $this->source); })()), "getFirstname", [], "any", false, false, false, 26), "html", null, true);
+        yield "</td>
+                <td>";
+        // line 27
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 27, $this->source); })()), "getBirthdate", [], "any", false, false, false, 27), "d/m/Y"), "html", null, true);
         yield "</td>
             </tr>
-        </tbody>
-    </table>
-    <a href='./security/change_password'>Change password</a>
+            </tbody>
+        </table>
+
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -168,40 +172,44 @@ class __TwigTemplate_c29918be1881c8c57439f64c59634cbd extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  134 => 25,  130 => 24,  126 => 23,  122 => 22,  118 => 21,  103 => 8,  100 => 7,  87 => 6,  64 => 2,  41 => 1,);
+        return array (  137 => 27,  133 => 26,  129 => 25,  125 => 24,  121 => 23,  103 => 7,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
         return new Source("{% extends './layouts/base.html.twig' %}
-{% block title %} Profil {% endblock %}
 
-
+{% block title %}Profil{% endblock %}
 
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
-    <h1>Account information</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th>Surname</th>
-            <th>Firstname</th>
-            <th>Birthdate</th>
-        </tr>
-        </thead>
-        <tbody>
+
+    <div class=\"profile-container\">
+        <h1 class=\"profile-title\">Account Information</h1>
+
+        <table class=\"profile-table\">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Surname</th>
+                <th>Firstname</th>
+                <th>Birthdate</th>
+            </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>{{ user.getId }}</td>
                 <td>{{ user.getEmail }}</td>
                 <td>{{ user.getSurname }}</td>
                 <td>{{ user.getFirstname }}</td>
-                <td>{{ user.getBirthdate | date }}</td>
+                <td>{{ user.getBirthdate | date('d/m/Y') }}</td>
             </tr>
-        </tbody>
-    </table>
-    <a href='./security/change_password'>Change password</a>
-{% endblock body %}", "security/account.html.twig", "C:\\Users\\Maceo's laptop\\Desktop\\projet\\v1\\templates\\security\\account.html.twig");
+            </tbody>
+        </table>
+
+    </div>
+{% endblock body %}
+", "security/account.html.twig", "C:\\Users\\amaury\\Documents\\B2\\PHP\\Projet\\SymfonyProject\\templates\\security\\account.html.twig");
     }
 }
