@@ -1,0 +1,7 @@
+<form method="post">
+    {{ form_start(form) }}
+    {{ form_row(form.plainPassword.first) }}
+    {{ form_row(form.plainPassword.second) }}
+    <button type="submit">Réinitialiser mon mot de passe</button>
+    {{ form_end(form) }}
+</form>

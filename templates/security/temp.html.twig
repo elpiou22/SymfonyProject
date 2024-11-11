@@ -1,0 +1,23 @@
+{% extends './layouts/base.html.twig' %}
+
+{% block title %} Réinitialisation de mot de pase {% endblock title %}
+
+{% block body %}
+
+
+    <h2 class="h3 mb-3 font-weight-normal">Réinitialisation du mot de passe</h2>
+    <h1 class="h3 mb-3 font-weight-normal">Veuillez entrer votre email:</h1>
+    <form method="post" action="{{ path('app_send_email_reset') }}">
+
+
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" class="form-control" autocomplete="email" required autofocus>
+
+        <button type="submit">Réinitialiser mon mot de passe</button>
+
+    </form>
+
+
+
+{% endblock body %}

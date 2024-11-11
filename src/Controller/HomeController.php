@@ -3,8 +3,13 @@
 
 namespace App\Controller;
 
+use App\Entity\PasswordResetRequest;
 use App\Form\MovieType;
 use App\Form\RegistrationFormType;
+use App\Form\ResetPasswordFormType;
+use App\Form\ResetPasswordRequestFormType;
+use App\Repository\PasswordResetRequestRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -63,7 +68,12 @@ class HomeController extends AbstractController
             );
             $user->setPassword($hashedPassword);
 
-            // Sauvegarde de l'utilisateur
+            do {
+                $randomNumber = mt_rand(100000000000, 999999999999);
+            } while ($entityManager->getRepository(Movie::class)->findOneBy(['token' => $randomNumber]) == $randomNumber);
+            $user->setToken($randomNumber);
+
+
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -81,7 +91,7 @@ class HomeController extends AbstractController
 
             $mailer->send($email);
 
-            // Redirection ou connexion automatique après l'inscription
+
             return $this->redirectToRoute('home');
         }
 
@@ -90,11 +100,130 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/pwd_reset', name: 'app_pwd_reset', methods: ['POST'])]
-    public function pwd_reset(): Response
+    /*
+    #[Route('/send_reset_email/', name: 'app_send_email_reset', methods: ['POST'])]
+    public function reset_email(MailerInterface $mailer, String $email): Response
     {
+
+        return new Response($email, Response::HTTP_OK);
+
+
+
+        $email_to_send = (new Email())
+            ->from('donotreply@monflix.com')
+            ->to($email)
+            ->subject('Réinitialisation du mot de passe')
+            ->text('' -
+                "Veuillez cliquer ici pour mettre à jour votre mot de passe:" -
+                ''
+            );
+
+        $mailer->send($email_to_send);
+
+
         return $this->redirectToRoute('home');
     }
+    */
+
+
+    #[Route('/send_reset_email', name: 'app_send_email_reset')]
+    public function request(
+        Request $request,
+        UserRepository $userRepository,
+        MailerInterface $mailer,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+        $form = $this->createForm(ResetPasswordRequestFormType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $email = $form->get('email')->getData();
+            $user = $userRepository->findOneBy(['email' => $email]);
+
+            if ($user) {
+                // Créer un token pour la réinitialisation du mot de passe
+                $token = bin2hex(random_bytes(32));
+
+                $resetRequest = new PasswordResetRequest();
+                $resetRequest->setUser($user);
+                $resetRequest->setToken($token);
+                $resetRequest->setCreatedAt(new \DateTime());
+
+
+                $entityManager->persist($resetRequest);
+                $entityManager->flush();
+
+                // Envoi de l'email avec le lien de réinitialisation
+                $emailMessage = (new Email())
+                    ->from('donotreply@monflix.com')
+                    ->to($email)
+                    ->subject('Réinitialisation de votre mot de passe')
+                    ->html(
+                        $this->renderView('security/mail_to_send_to_reset.html.twig', [
+                            'token' => $token,
+                            'user' => $user,
+                        ])
+                    );
+
+                $mailer->send($emailMessage);
+            }
+
+            // MAUVAIS EMAIL, A FAIRE UNE PAGE OU UNE ERREUR
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('security/send_email.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    #[Route('/reset_password/{token}', name: 'app_reset_password')]
+    public function resetPassword(
+        Request $request,
+        PasswordResetRequestRepository $resetRequestRepository,
+        $token,
+        EntityManagerInterface $entityManager
+    ): Response
+    {
+        $resetRequest = $resetRequestRepository->findOneBy(['token' => $token]);
+
+        if (!$resetRequest || $resetRequest->getCreatedAt() < new \DateTime('-1 hour')) {
+            // Token expiré ou invalide
+            return new Response("Token expiré");
+        }
+
+        // Créer un formulaire pour le mot de passe
+        $form = $this->createForm(ResetPasswordFormType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Mettre à jour le mot de passe de l'utilisateur
+            $user = $resetRequest->getUser();
+            $password = $form->get('plainPassword')->getData();
+            $user->setPassword(password_hash($password, PASSWORD_BCRYPT));  // Hachage du mot de passe
+
+
+            $entityManager->flush();
+
+            // Supprimer le token de réinitialisation après utilisation
+            $entityManager->remove($resetRequest);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_signin');
+        }
+
+        return $this->render('security/pwd_reset.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+
+
 
 
     #[Route('/create', name: 'app_create')]
@@ -169,11 +298,6 @@ class HomeController extends AbstractController
             'user' => $user,
         ]);
     }
-
-
-
-
-
 
 
 
