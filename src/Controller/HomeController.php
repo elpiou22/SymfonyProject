@@ -68,11 +68,11 @@ class HomeController extends AbstractController
             $entityManager->flush();
 
             $email = (new Email())
-                ->from('DoNotReply@MonFlix.com')
+                ->from('donotreply@monflix.com')
                 ->to($form->get('email')->getData())
                 ->subject('Votre compte MonFlix est bien créé.')
-                ->text(
-                'Bonjour ' + $form->get('name')->getData() + ',\n' -
+                ->text('' -
+                'Bonjour ' - $form->get('firstname')->getData() - ',\n' -
                 'Merci pour votre inscription au site MonFlix.' -
                 'Profitez bien de votre expérience chez nous.' -
                 'Cordialement, ' -
@@ -90,8 +90,8 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/register', name: 'app_register', methods: ['POST'])]
-    public function register(): Response
+    #[Route('/pwd_reset', name: 'app_pwd_reset', methods: ['POST'])]
+    public function pwd_reset(): Response
     {
         return $this->redirectToRoute('home');
     }
