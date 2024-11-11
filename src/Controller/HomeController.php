@@ -18,6 +18,10 @@ use App\Entity\Movie;
 use App\Entity\User;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
+
+
 
 class HomeController extends AbstractController
 {
@@ -38,7 +42,14 @@ class HomeController extends AbstractController
     }
 
     #[Route('/signin', name: 'app_signin')]
-    public function signin(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    public function signin(
+        Request $request,
+        UserPasswordHasherInterface $passwordHasher,
+        EntityManagerInterface $entityManager,
+        MailerInterface $mailer
+
+
+    ): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -55,6 +66,20 @@ class HomeController extends AbstractController
             // Sauvegarde de l'utilisateur
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $email = (new Email())
+                ->from('DoNotReply@MonFlix.com')
+                ->to($form->get('email')->getData())
+                ->subject('Votre compte MonFlix est bien créé.')
+                ->text(
+                'Bonjour ' + $form->get('name')->getData() + ',\n' -
+                'Merci pour votre inscription au site MonFlix.' -
+                'Profitez bien de votre expérience chez nous.' -
+                'Cordialement, ' -
+                'L\'équipe MonFlix.'
+                );
+
+            $mailer->send($email);
 
             // Redirection ou connexion automatique après l'inscription
             return $this->redirectToRoute('home');
@@ -144,6 +169,12 @@ class HomeController extends AbstractController
             'user' => $user,
         ]);
     }
+
+
+
+
+
+
 
 
 

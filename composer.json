@@ -19,6 +19,7 @@
         "symfony/flex": "^2",
         "symfony/form": "7.1.*",
         "symfony/framework-bundle": "7.1.*",
+        "symfony/mailer": "7.1.*",
         "symfony/runtime": "^7.1",
         "symfony/security-bundle": "7.1.*",
         "symfony/twig-bundle": "7.1.*",
@@ -78,7 +79,8 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "7.1.*"
+            "require": "7.1.*",
+            "docker": true
         }
     }
 }
