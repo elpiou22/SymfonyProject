@@ -91,28 +91,26 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('movies/update/{id}', 'app_movie_update')]
-    public function update(
-        Movie $movie,
-        Request $request,
-        EntityManagerInterface $entityManager
-    ): Response
+    #[Route('/movies/update/{id}', name: 'app_movie_update')]
+    public function edit(Request $request, Movie $movie, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(MovieType::class, $movie);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($movie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home'); // Redirection vers une page de succès
+            $this->addFlash('success', 'Le film a été modifié avec succès.');
+
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('Movie/update.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+
+
 
     #[Route('/movies/{id}', 'app_movie_read')]
     public function read(

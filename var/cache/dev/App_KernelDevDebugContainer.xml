@@ -327,7 +327,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.B6A2azN"/>
+      <argument type="service" id=".service_locator.6Gyqu4v"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1684,7 +1684,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.B6A2azN"/>
+      <argument type="service" id=".service_locator.6Gyqu4v"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -4906,9 +4906,9 @@
         <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator._xxDIzo.App\Controller\HomeController::update()" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\HomeController::update()"/>
-      <argument>App\Controller\HomeController::update()</argument>
+    <service id=".service_locator._xxDIzo.App\Controller\HomeController::edit()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\HomeController::edit()"/>
+      <argument>App\Controller\HomeController::edit()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator._xxDIzo" method="withContext"/>
     </service>
@@ -4924,7 +4924,7 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator._xxDIzo" method="withContext"/>
     </service>
-    <service id=".service_locator.B6A2azN" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.6Gyqu4v" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.4wc4Ag1.kernel::registerContainerConfiguration()"/>
@@ -4934,7 +4934,7 @@
         <argument key="App\Controller\HomeController::index" type="service_closure" id=".service_locator.P.blNFL.App\Controller\HomeController::index()"/>
         <argument key="App\Controller\HomeController::signin" type="service_closure" id=".service_locator.r_XOrDH.App\Controller\HomeController::signin()"/>
         <argument key="App\Controller\HomeController::create" type="service_closure" id=".service_locator.P.blNFL.App\Controller\HomeController::create()"/>
-        <argument key="App\Controller\HomeController::update" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::update()"/>
+        <argument key="App\Controller\HomeController::edit" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::edit()"/>
         <argument key="App\Controller\HomeController::read" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::read()"/>
         <argument key="App\Controller\HomeController::delete" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::delete()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.4wc4Ag1.kernel::registerContainerConfiguration()"/>
@@ -4942,7 +4942,7 @@
         <argument key="App\Controller\HomeController:index" type="service_closure" id=".service_locator.P.blNFL.App\Controller\HomeController::index()"/>
         <argument key="App\Controller\HomeController:signin" type="service_closure" id=".service_locator.r_XOrDH.App\Controller\HomeController::signin()"/>
         <argument key="App\Controller\HomeController:create" type="service_closure" id=".service_locator.P.blNFL.App\Controller\HomeController::create()"/>
-        <argument key="App\Controller\HomeController:update" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::update()"/>
+        <argument key="App\Controller\HomeController:edit" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::edit()"/>
         <argument key="App\Controller\HomeController:read" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::read()"/>
         <argument key="App\Controller\HomeController:delete" type="service_closure" id=".service_locator._xxDIzo.App\Controller\HomeController::delete()"/>
       </argument>
@@ -6167,7 +6167,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.B6A2azN"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.6Gyqu4v"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>

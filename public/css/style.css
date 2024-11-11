@@ -17,6 +17,7 @@ body {
     margin: 0;
 }
 
+
 /* Barre de navigation */
 .navbar {
     display: flex;
@@ -69,7 +70,6 @@ h1 {
     background-color: #2c2c2c;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    color: #fff;
 }
 
 /* Titre du formulaire */
@@ -80,9 +80,10 @@ h1 {
     margin-bottom: 20px;
 }
 
-.form-container {
-    display: none;
-    margin-top: 20px;
+.form-container h1 {
+    text-align: center;
+    color: #eeeeee;
+    margin-bottom: 20px;
 }
 
 .form-container.active {
@@ -93,6 +94,14 @@ h1 {
 /* Champs de formulaire */
 .form-fields .form-group {
     margin-bottom: 15px;
+    color: white;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
 }
 
 .form-container h2 {
@@ -131,7 +140,7 @@ h1 {
     padding: 10px;
     border: 1px solid #444;
     background-color: #333;
-    color: #111313;
+    color: #eeeeee;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 10px;
@@ -143,6 +152,45 @@ h1 {
     border-color: #e50914;
     outline: none;
 }
+
+.form-container input[type="date"]{
+    background-color: #2c2c2c;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: #9b050e;
+    outline: none;
+}
+
+/* Submit button styling */
+.btn-submit {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #9b050e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #8c1c1c;
+}
+
 /* Bouton d'envoi */
 .btn-primary {
     width: 100%;
