@@ -1,0 +1,11 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        cover_images:
+            uri_prefix: /uploads/covers
+            upload_destination: '%kernel.project_dir%/public/uploads/covers'
+            namer: App\Service\MovieTitleNamer
+        movies:
+            uri_prefix: /uploads/movies
+            upload_destination: '%kernel.project_dir%/public/uploads/movies'
+            namer: App\Service\MovieTitleNamer

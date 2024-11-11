@@ -1,14 +1,20 @@
 {% extends './layouts/base.html.twig' %}
-{% block title %} {{ movie.getName }} {% endblock %}
+{% block title %} {{ movie.getTitle }} {% endblock %}
 
 
 
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
 
+
+    <video width="320" height="240" controls>
+        <source src="{{ asset('uploads/movies/' ~ movie.getTitle ~ '.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     {{ movie.getId }}
 
-    {{ movie.getName }}
+    {{ movie.getTitle }}
 
     {{ movie.getSynopsis }}
 
