@@ -31,14 +31,19 @@
             {% for movie in movies %}
                 <tr class="movie-row">
                     <td>
+                        <a href="movies/watch/{{ movie.id }}">
                         {% if movie.coverImage %}
                             <img src="{{ asset('uploads/covers/' ~ movie.coverImage) }}" alt="Image de couverture">
                         {% else %}
                             <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset(image_path) }}" alt="Film {{ movie.getTitle }}">
                         {% endif %}
-
+                        </a>
                     </td>
-                    <td>{{ movie.getTitle }}</td>
+                    <td>
+                        <a href="movies/watch/{{ movie.id }}">
+                            {{ movie.getTitle }}
+                        </a>
+                    </td>
                     <td>{{ movie.getSynopsis }}</td>
                     <td>{{ movie.getReleaseDate|date('d-m-Y') }}</td>
                     {% if is_granted("ROLE_ADMIN") %}

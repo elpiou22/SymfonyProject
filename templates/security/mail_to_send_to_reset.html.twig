@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 <html>
-<body>
-<h2>Réinitialisation de votre mot de passe</h2>
-<p>Bonjour {{ user.firstname }},</p>
-<p>Vous avez demandé la réinitialisation de votre mot de passe. Cliquez sur le lien ci-dessous pour le réinitialiser :</p>
+    <body>
+        <h2>Réinitialisation de votre mot de passe</h2>
+        <p>Bonjour {{ user.firstname }},</p>
+        <p>Vous avez demandé la réinitialisation de votre mot de passe. Cliquez sur le lien ci-dessous pour le réinitialiser :</p>
 
-<a href="http://localhost:8000/reset_password/{{ token }}">Réinitialiser mon mot de passe</a>
-</body>
+        <a href="http://localhost:8000/reset_password/{{ token }}">Réinitialiser mon mot de passe</a>
+    </body>
 </html>

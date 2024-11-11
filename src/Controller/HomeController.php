@@ -143,7 +143,7 @@ class HomeController extends AbstractController
             $user = $userRepository->findOneBy(['email' => $email]);
 
             if ($user) {
-                // Créer un token pour la réinitialisation du mot de passe
+
                 $token = bin2hex(random_bytes(32));
 
                 $resetRequest = new PasswordResetRequest();
@@ -155,7 +155,7 @@ class HomeController extends AbstractController
                 $entityManager->persist($resetRequest);
                 $entityManager->flush();
 
-                // Envoi de l'email avec le lien de réinitialisation
+
                 $emailMessage = (new Email())
                     ->from('donotreply@monflix.com')
                     ->to($email)
@@ -268,7 +268,7 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/movies/{id}', 'app_movie_read')]
+    #[Route('/movies/watch/{id}', 'app_movie_read')]
     public function read(
         Movie $movie,
         EntityManagerInterface $entityManager,

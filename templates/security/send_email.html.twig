@@ -1,8 +1,15 @@
+{% extends './layouts/base.html.twig' %}
+
+{% block title %} Réinitialisation du mot de passe {% endblock title %}
 
 
-<div id="register-form" class="form-container">
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Envoyer</button>
-    {{ form_end(form) }}
-</div>
+{% block body %}
+
+
+    <div class="form-container active">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock body %}

@@ -37,6 +37,7 @@ security:
         - { path: /movies/delete, roles: ROLE_ADMIN }
         - { path: /movies/update, roles: ROLE_ADMIN }
         - { path: /create, roles: ROLE_ADMIN }
+        - { path: /movies/watch, roles: ROLE_USER }
 
 when@test:
     security:
