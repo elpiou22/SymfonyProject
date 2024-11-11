@@ -233,6 +233,6 @@ class __TwigTemplate_630eb5fc5d7720e9149ac76bde442593 extends Template
     </body>
     </html>
 {% endblock html%}
-", "./layouts/base.html.twig", "C:\\Users\\Maceo's laptop\\Desktop\\projet\\v1\\templates\\layouts\\base.html.twig");
+", "./layouts/base.html.twig", "C:\\Users\\amaury\\Documents\\B2\\PHP\\Projet\\SymfonyProject\\templates\\layouts\\base.html.twig");
     }
 }

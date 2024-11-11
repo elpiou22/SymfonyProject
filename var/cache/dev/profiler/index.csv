@@ -542,3 +542,14 @@ ef3504,::1,GET,http://localhost:8000/,1731333740,885b66,500,request
 5a37e0,::1,GET,http://localhost:8000/,1731333780,,200,request
 394892,::1,GET,http://localhost:8000/,1731334270,0f7b0e,500,request
 0f7b0e,::1,GET,http://localhost:8000/,1731334270,,500,request
+397fc0,127.0.0.1,GET,http://127.0.0.1:8000/,1731338052,461a21,500,request
+461a21,127.0.0.1,GET,http://127.0.0.1:8000/,1731338052,,500,request
+929ccc,127.0.0.1,GET,http://127.0.0.1:8000/,1731338172,,200,request
+06dfe7,127.0.0.1,GET,http://127.0.0.1:8000/logout,1731338225,,302,request
+b9bba9,127.0.0.1,GET,http://127.0.0.1:8000/,1731338226,,200,request
+92d490,127.0.0.1,GET,http://127.0.0.1:8000/signin,1731338228,,200,request
+acaa9f,127.0.0.1,POST,http://127.0.0.1:8000/signin,1731338233,,302,request
+8c7f32,127.0.0.1,GET,http://127.0.0.1:8000/,1731338234,,200,request
+d7bdba,127.0.0.1,GET,http://127.0.0.1:8000/create,1731338236,,200,request
+aebcf5,127.0.0.1,POST,http://127.0.0.1:8000/create,1731338246,,302,request
+7be1e9,127.0.0.1,GET,http://127.0.0.1:8000/,1731338247,,200,request

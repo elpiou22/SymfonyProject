@@ -173,7 +173,6 @@ class __TwigTemplate_202686c89882244c9312948e1a0ed32c extends Template
         <button type=\"submit\" class=\"btn btn-primary\">Enregistrer</button>
         {{ form_end(form) }}
     </div>
-{% endblock body %}
-", "Movie/create.html.twig", "C:\\Users\\Maceo's laptop\\Desktop\\projet\\v1\\templates\\Movie\\create.html.twig");
+{% endblock body %}", "Movie/create.html.twig", "C:\\Users\\amaury\\Documents\\B2\\PHP\\Projet\\SymfonyProject\\templates\\Movie\\create.html.twig");
     }
 }

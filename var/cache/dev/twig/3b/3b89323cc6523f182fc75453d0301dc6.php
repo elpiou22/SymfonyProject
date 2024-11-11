@@ -41,7 +41,7 @@ class __TwigTemplate_db304f9bc20529638090e31a82fcd400 extends Template
     protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
     {
         // line 1
-        return "@WebProfiler/Profiler/home.html.twig";
+        return "@WebProfiler/Profiler/base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -53,7 +53,7 @@ class __TwigTemplate_db304f9bc20529638090e31a82fcd400 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "@WebProfiler/Profiler/layout.html.twig"));
 
-        $this->parent = $this->loadTemplate("@WebProfiler/Profiler/home.html.twig", "@WebProfiler/Profiler/layout.html.twig", 1);
+        $this->parent = $this->loadTemplate("@WebProfiler/Profiler/base.html.twig", "@WebProfiler/Profiler/layout.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -387,7 +387,7 @@ class __TwigTemplate_db304f9bc20529638090e31a82fcd400 extends Template
 
     public function getSourceContext(): Source
     {
-        return new Source("{% extends '@WebProfiler/Profiler/home.html.twig' %}
+        return new Source("{% extends '@WebProfiler/Profiler/base.html.twig' %}
 
 {% block body %}
     <div class=\"container\">
@@ -463,6 +463,6 @@ class __TwigTemplate_db304f9bc20529638090e31a82fcd400 extends Template
         </div>
     </div>
 {% endblock %}
-", "@WebProfiler/Profiler/layout.html.twig", "C:\\Users\\Maceo's laptop\\Desktop\\projet\\v1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\layout.html.twig");
+", "@WebProfiler/Profiler/layout.html.twig", "C:\\Users\\amaury\\Documents\\B2\\PHP\\Projet\\SymfonyProject\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Profiler\\layout.html.twig");
     }
 }

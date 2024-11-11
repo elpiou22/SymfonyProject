@@ -272,6 +272,6 @@ class __TwigTemplate_81c679662f8cf4c80357874ef640b6f5 extends Template
     </section>
 
 
-{% endblock body %}", "home.html.twig", "C:\\Users\\Maceo's laptop\\Desktop\\projet\\v1\\templates\\home.html.twig");
+{% endblock body %}", "home.html.twig", "C:\\Users\\amaury\\Documents\\B2\\PHP\\Projet\\SymfonyProject\\templates\\home.html.twig");
     }
 }

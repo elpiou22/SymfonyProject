@@ -145,6 +145,6 @@ class __TwigTemplate_25cc5611e1b24eea45d34210f8f328c6 extends Template
         {% endif %}
     </ul>
 </nav>
-", "./layouts/navbar.html.twig", "C:\\Users\\Maceo's laptop\\Desktop\\projet\\v1\\templates\\layouts\\navbar.html.twig");
+", "./layouts/navbar.html.twig", "C:\\Users\\amaury\\Documents\\B2\\PHP\\Projet\\SymfonyProject\\templates\\layouts\\navbar.html.twig");
     }
 }
