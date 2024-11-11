@@ -1,0 +1,25 @@
+{% extends './layouts/base.html.twig' %}
+
+{% block title %} Login {% endblock title %}
+
+
+{% block body %}
+
+
+
+    <div class="container">
+
+
+        <div id="register-form" class="form-container active">
+            {{ form_start(registrationForm) }}
+            {{ form_widget(registrationForm) }}
+            <button type="submit">Modifier</button>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+
+
+
+
+
+{% endblock body %}

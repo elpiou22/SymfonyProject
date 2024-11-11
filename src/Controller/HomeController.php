@@ -10,6 +10,7 @@ use App\Form\ResetPasswordFormType;
 use App\Form\ResetPasswordRequestFormType;
 use App\Repository\PasswordResetRequestRepository;
 use App\Repository\UserRepository;
+use Carbon\Carbon;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -21,6 +22,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Movie;
 use App\Entity\User;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use Symfony\Component\Mime\Email;
@@ -61,18 +63,12 @@ class HomeController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // Hachage du mot de passe
+
             $hashedPassword = $passwordHasher->hashPassword(
                 $user,
                 $form->get('password')->getData()
             );
             $user->setPassword($hashedPassword);
-
-            do {
-                $randomNumber = mt_rand(100000000000, 999999999999);
-            } while ($entityManager->getRepository(Movie::class)->findOneBy(['token' => $randomNumber]) == $randomNumber);
-            $user->setToken($randomNumber);
-
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -271,14 +267,27 @@ class HomeController extends AbstractController
     #[Route('/movies/watch/{id}', 'app_movie_read')]
     public function read(
         Movie $movie,
+
         EntityManagerInterface $entityManager,
         int $id
     ): Response
     {
+        $user = $this->getUser();
         $movie = $entityManager->getRepository(Movie::class)->find($id);
 
+        $is_user_too_young = false;
+
+        $birthdate = Carbon::parse($user->getBirthdate());
+        $releaseDate = Carbon::parse($movie->getReleaseDate());
+        $daysDifference = $birthdate->diffInDays($releaseDate);
+        $ageRequirement = $movie->getAgeRequirement();
+        if ($daysDifference < $ageRequirement * 365) {
+            $is_user_too_young = true;
+        }
+
         return $this->render('Movie/watch.html.twig', [
-            'movie' => $movie
+            'movie' => $movie,
+            'is_user_too_young' => $is_user_too_young,
         ]);
 
     }
@@ -297,6 +306,42 @@ class HomeController extends AbstractController
         return $this->render('security/account.html.twig', [
             'user' => $user,
         ]);
+    }
+
+    #[Route('/update_profile', name: 'app_update_profile')]
+    #[IsGranted("IS_AUTHENTICATED_FULLY")]
+    public function update_profile(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        UserPasswordHasherInterface $passwordHasher
+    ): Response
+    {
+
+        $user = $this->getUser();
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                $form->get('password')->getData()
+            );
+            $user->setPassword($hashedPassword);
+
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+
+            return $this->redirectToRoute('app_profile');
+        }
+
+        return $this->render('security/profile_update.html.twig', [
+            'registrationForm' => $form->createView(),
+        ]);
+
     }
 
 

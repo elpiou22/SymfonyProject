@@ -17,9 +17,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'integer')]
-    private ?int $token = null;
-
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
@@ -51,21 +48,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
-    /**
-     * @return int|null
-     */
-    public function getToken(): ?int
-    {
-        return $this->token;
-    }
-
-    /**
-     * @param int|null $token
-     */
-    public function setToken(?int $token): void
-    {
-        $this->token = $token;
-    }
 
 
 
