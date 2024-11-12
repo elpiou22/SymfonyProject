@@ -58,6 +58,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    private ?array $towatchlater = null;
+
+    /**
+     * @return array
+     */
+    public function getTowatchlater(): array
+    {
+        return $this->towatchlater ?? [];
+    }
+
+    /**
+     * @param array $towatchlater
+     * @return $this
+     */
+    public function setTowatchlater(array $towatchlater): static
+    {
+        $this->towatchlater = $towatchlater;
+
+        return $this;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;

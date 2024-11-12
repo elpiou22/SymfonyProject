@@ -17,6 +17,7 @@ body {
     margin: 0;
 }
 
+
 /* Barre de navigation */
 .navbar {
     display: flex;
@@ -69,7 +70,6 @@ h1 {
     background-color: #2c2c2c;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    color: #fff;
 }
 
 /* Titre du formulaire */
@@ -80,9 +80,10 @@ h1 {
     margin-bottom: 20px;
 }
 
-.form-container {
-    display: none;
-    margin-top: 20px;
+.form-container h1 {
+    text-align: center;
+    color: #eeeeee;
+    margin-bottom: 20px;
 }
 
 .form-container.active {
@@ -93,11 +94,19 @@ h1 {
 /* Champs de formulaire */
 .form-fields .form-group {
     margin-bottom: 15px;
+    color: white;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
 }
 
 .form-container h2 {
     text-align: center;
-    color: #46484f;
+    color: #999b9f;
     margin-bottom: 15px;
     font-size: 24px;
 }
@@ -131,7 +140,7 @@ h1 {
     padding: 10px;
     border: 1px solid #444;
     background-color: #333;
-    color: #111313;
+    color: #eeeeee;
     border-radius: 5px;
     font-size: 16px;
     margin-bottom: 10px;
@@ -143,6 +152,45 @@ h1 {
     border-color: #e50914;
     outline: none;
 }
+
+.form-container input[type="date"]{
+    background-color: #2c2c2c;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    border-color: #9b050e;
+    outline: none;
+}
+
+/* Submit button styling */
+.btn-submit {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #9b050e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #8c1c1c;
+}
+
 /* Bouton d'envoi */
 .btn-primary {
     width: 100%;
@@ -185,7 +233,7 @@ button:hover {
 .form-toggle-btns button {
     padding: 12px 20px;
     background-color: #555555;
-    color: #696969;
+    color: #eeeeee;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -265,4 +313,67 @@ button:hover {
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 400px; /* Espace pour éviter le chevauchement avec la navbar */
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #46484f;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h1{
+    color: white;
+}
+
+.profile-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.profile-table th, .profile-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.profile-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.profile-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
 }

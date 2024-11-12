@@ -7,9 +7,9 @@
     {% include './layouts/navbar.html.twig' %}
     <h1>Account information</h1>
     {% if user.profilePicture %}
-        <img src="{{ asset(user.profilePicture) }}" alt="Film">
+        <img src="{{ asset('uploads/profile_pictures/'~user.profilePicture) }}" alt="Film">
     {% else %}
-        <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset(image_path) }}" alt="Film {{ movie.getTitle }}">
+        <img style="max-height: 200px; max-width: 200px; height: auto; width: auto" src="{{ asset('images/default.webp') }}" alt="pp">
     {% endif %}
     <table>
         <thead>
@@ -31,6 +31,6 @@
             </tr>
         </tbody>
     </table>
-    <a href={{ path('app_send_email_reset') }}>Change password</a>
-    <a href={{ path('app_update_profile') }}>Modify account</a>
+    <a href={{ path('acc_send_email_reset') }}>Change password</a>
+    <a href={{ path('acc_update_profile') }}>Modify account</a>
 {% endblock body %}

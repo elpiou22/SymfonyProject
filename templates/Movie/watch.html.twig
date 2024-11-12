@@ -9,7 +9,7 @@
     {% if not is_user_too_young %}
 
         <video width="320" height="240" controls>
-            <source src="{{ asset(movie.movieFile) }}" type="video/mp4">
+            <source src="{{ asset('uploads/movies/' ~ movie.movieFile) }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     {% else %}

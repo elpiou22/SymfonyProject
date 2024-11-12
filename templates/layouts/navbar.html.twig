@@ -4,13 +4,13 @@
     <ul class="nav-links">
         <li><a href="{{ path('home') }}">Accueil</a></li>
         {% if (is_granted("ROLE_ADMIN")) %}
-            <li><a href="{{ path('app_create') }}">Ajouter un film</a></li>
+            <li><a href="{{ path('movie_create') }}">Ajouter un film</a></li>
         {% endif %}
         {% if not(is_granted("ROLE_ADMIN") or is_granted("ROLE_USER")) %}
-            <li><a href="{{ path('app_signin') }}">Se connecter</a></li>
-            <li><a href="{{ path('app_signin') }}">Créer un compte</a></li>
+            <li><a href="{{ path('acc_signin') }}">Se connecter</a></li>
+            <li><a href="{{ path('acc_signin') }}">Créer un compte</a></li>
         {% else %}
-            <li><a href="{{ path('app_profile') }}">Profil</a></li>
+            <li><a href="{{ path('acc_profile') }}">Profil</a></li>
             <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
         {% endif %}
     </ul>

@@ -18,7 +18,7 @@
     {# Formulaire de Connexion #}
     <div id="login-form" class="form-container active">
         <h2>Se connecter</h2>
-        <form action="{{ path('app_signin') }}" method="post">
+        <form action="{{ path('acc_login') }}" method="post">
             <div>
                 <label for="username">Email :</label>
                 <input style="background-color: #555555" type="text" id="username" name="registration_form[email]" value="" required autofocus>
@@ -31,9 +31,14 @@
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
             >
+            <div>
+                <label for="remember_me">Se souvenir de moi :</label>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+            </div>
+
             <button style="background-color: #555555" type="submit">Se connecter</button>
         </form>
-        <li><a href="{{ path('app_send_email_reset') }}">Réinitiliser le mot de passe</a></li>
+        <li><a href="{{ path('acc_send_email_reset') }}">Réinitiliser le mot de passe</a></li>
     </div>
 
     {# Formulaire d'Inscription #}

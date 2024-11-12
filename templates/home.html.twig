@@ -4,17 +4,32 @@
 
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
+    <script>
+        function checkboxChanged(checkbox, movie_id, user_id) {
+            if (checkbox.checked) {
 
-    {#
-    <section class="banner">
-        <div class="banner-content">
-            <h1>Film du Moment</h1>
-            <p>Regardez le dernier film à succès dès maintenant !</p>
-            <button>Lire</button>
-            <button>Ajouter à Ma Liste</button>
-        </div>
-    </section>
-#}
+                console.log( movie_id );
+                console.log( user_id );
+
+                fetch('{{ path('app_to_watch_later_check') }}', {method: 'GET'})
+                    .then(response => {
+                        if (response.status === 201) {
+
+
+                        } else if (response.status === 204) {
+
+
+
+                        }
+                    })
+                    .catch(error => console.error('Erreur: ', error));
+
+            } else {
+                console.log("La case est décochée.");
+            }
+        }
+    </script>
+
 
     <section class="categories">
         <table class="movie-table">
@@ -27,6 +42,9 @@
                 {% if is_granted("ROLE_ADMIN") %}
                     <th>Actions</th>
                 {% endif %}
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                <th>to watch later</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -35,7 +53,7 @@
                     <td>
                         <a href="movies/watch/{{ movie.id }}">
                         {% if movie.coverImage %}
-                            <img src="{{ asset(movie.coverImage) }}" alt="Film">
+                            <img src="{{ asset('uploads/covers/'~movie.coverImage) }}" alt="Film">
 
 
                         {% else %}
@@ -55,6 +73,16 @@
                             <a href="movies/update/{{ movie.getId }}">Update</a> |
                             <a href="movies/delete/{{ movie.getId }}">Delete</a>
                         </td>
+                    {% endif %}
+
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+
+                        <td>
+                            <label>
+                                <input type="checkbox" onclick="checkboxChanged(this, {{ movie.id }}, {{ user.id }})">
+                            </label>
+                        </td>
+
                     {% endif %}
                 </tr>
             {% endfor %}
