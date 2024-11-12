@@ -43,8 +43,6 @@ class HomeController extends AbstractController
 
         $user = $this->getUser();
 
-
-
         $default_image = "images/default.webp";
 
         $movies = $entityManager->getRepository(Movie::class)->findAll();
@@ -57,18 +55,39 @@ class HomeController extends AbstractController
     }
 
 
-    #[Route('/to_watch_later_check', name: 'app_to_watch_later_check')]
-    public function sessionCheck(): JsonResponse
+    #[Route('/to_watch_later_check', name: 'app_to_watch_later_check', methods: ['POST'])]
+    public function sessionCheck(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
 
-        $user.setTowatchlater()
+        $data = json_decode($request->getContent(), true);
+        $movie_id = $data['movie_id'];
+        $user_id = $data['user_id'];
+        $status = $data['status'];
+
+        $user = $entityManager->getRepository(User::class)->findOneBy(['id' => $user_id]);
 
 
-        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return new JsonResponse(['status' => 'session_expired'], 401);
+
+        if ($status == 201) {
+            $user->addTowatchlater($movie_id);
+            $entityManager->flush();
+            return new Response(
+                json_encode(['message' => 'Film ajouté à la liste "à regarder plus tard".']),
+                Response::HTTP_CREATED
+            );
+        } else if ($status == 205) {
+            $user->removeTowatchlater($movie_id);
+            $entityManager->flush();
+            return new Response(
+                json_encode(['message' => 'Film suprimé de la liste "à regarder plus tard".']),
+                Response::HTTP_CREATED
+            );
+        } else {
+            return new JsonResponse(['message' => 'Statut inconnu'], Response::HTTP_BAD_REQUEST);
         }
-        return new JsonResponse(['status' => 'session_active']);
+
+
+
     }
 
 

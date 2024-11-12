@@ -1,34 +1,39 @@
 {% extends './layouts/base.html.twig' %}
 
-{% block title %} Home {% endblock title %}
+{% block head %}
+    <meta charset="UTF-8">
+    <title>
+        Home
+    </title>
+
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
+
+    <script>
+        function checkboxChanged(checkbox, movie_id, user_id) {
+            let status = checkbox.checked ? 201 : 205;
+
+            fetch('{{ path('app_to_watch_later_check') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    movie_id: movie_id,
+                    user_id: user_id,
+                    status: status
+                })
+            })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => console.error("Erreur:", error));
+        }
+    </script>
+{% endblock head %}
+
 
 {% block body %}
     {% include './layouts/navbar.html.twig' %}
-    <script>
-        function checkboxChanged(checkbox, movie_id, user_id) {
-            if (checkbox.checked) {
 
-                console.log( movie_id );
-                console.log( user_id );
-
-                fetch('{{ path('app_to_watch_later_check') }}', {method: 'GET'})
-                    .then(response => {
-                        if (response.status === 201) {
-
-
-                        } else if (response.status === 204) {
-
-
-
-                        }
-                    })
-                    .catch(error => console.error('Erreur: ', error));
-
-            } else {
-                console.log("La case est décochée.");
-            }
-        }
-    </script>
 
 
     <section class="categories">

@@ -60,7 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     #[ORM\Column(type: Types::JSON, nullable: true)]
-    private ?array $towatchlater = null;
+    private ?array $towatchlater = [];
 
     /**
      * @return array
@@ -80,6 +80,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function addTowatchlater(int $id): void
+    {
+
+        if (!in_array($id, $this->towatchlater, true)) {
+            $this->towatchlater[] = $id;
+        }
+    }
+
+    public function removeTowatchlater(int $id): void
+    {
+        if (($key = array_search($id, $this->towatchlater)) !== false) {
+            unset($this->towatchlater[$key]);
+        }
+        $this->towatchlater = array_values($this->towatchlater);
+    }
+
 
 
 
