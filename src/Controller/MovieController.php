@@ -47,7 +47,7 @@ class MovieController extends AbstractController
             $entityManager->persist($movie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home'); // Redirection vers une page de succès
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('Movie/create.html.twig', [
@@ -103,13 +103,14 @@ class MovieController extends AbstractController
     }
 
 
+    #[Route('/movies/delete/{id}', name: 'movie_delete')]
+    public function delete(Movie $movie, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($movie);
+        $entityManager->flush();
 
-
-
-
-
-
-
+        return $this->redirectToRoute('home');
+    }
 
 
 }

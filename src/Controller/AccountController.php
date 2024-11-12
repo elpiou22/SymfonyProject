@@ -147,7 +147,8 @@ class AccountController extends AbstractController
                 $mailer->send($emailMessage);
             }
 
-            // MAUVAIS EMAIL, A FAIRE UNE PAGE OU UNE ERREUR
+
+            // @todo MAUVAIS EMAIL, A FAIRE UNE PAGE OU UNE ERREUR
             return $this->redirectToRoute('home');
         }
 
@@ -169,25 +170,23 @@ class AccountController extends AbstractController
         $resetRequest = $resetRequestRepository->findOneBy(['token' => $token]);
 
         if (!$resetRequest || $resetRequest->getCreatedAt() < new \DateTime('-1 hour')) {
-            // Token expiré ou invalide
+
             return new Response("Token expiré");
         }
 
-        // Créer un formulaire pour le mot de passe
         $form = $this->createForm(ResetPasswordFormType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Mettre à jour le mot de passe de l'utilisateur
+
             $user = $resetRequest->getUser();
             $password = $form->get('plainPassword')->getData();
-            $user->setPassword(password_hash($password, PASSWORD_BCRYPT));  // Hachage du mot de passe
-
+            $user->setPassword(password_hash($password, PASSWORD_BCRYPT));
 
             $entityManager->flush();
 
-            // Supprimer le token de réinitialisation après utilisation
+
             $entityManager->remove($resetRequest);
             $entityManager->flush();
 

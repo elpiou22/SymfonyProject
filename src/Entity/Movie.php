@@ -19,7 +19,7 @@ class Movie
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
-    #private ?string $name = null;
+
 
     #[ORM\Column(type: 'integer')]
     private ?int $ageRequirement = null;
