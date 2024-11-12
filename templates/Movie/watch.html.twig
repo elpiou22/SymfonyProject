@@ -9,13 +9,13 @@
     {% if not is_user_too_young %}
 
         <video width="320" height="240" controls>
-            <source src="{{ asset('uploads/movies/' ~ movie.getTitle ~ '.mp4') }}" type="video/mp4">
+            <source src="{{ asset(movie.movieFile) }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     {% else %}
 
         <h1>Vous êtes trop jeune pour regarder ce film</h1>
-        <img src="{{ asset('uploads/covers/' ~ movie.coverImage) }}" alt="{{ movie.getTitle }}">
+        <img src="{{ asset(movie.coverImage) }}" alt="{{ movie.getTitle }}">
 
     {% endif %}
 
